@@ -80,6 +80,14 @@ public class ClientGUI extends JFrame implements ActionListener {
         jb17 = new JButton();
         jb17.setBackground(empty);
 
+        jb11.addActionListener(this);
+        jb12.addActionListener(this);
+        jb13.addActionListener(this);
+        jb14.addActionListener(this);
+        jb15.addActionListener(this);
+        jb16.addActionListener(this);
+        jb17.addActionListener(this);
+
         jpOne.add(jb11);
         jpOne.add(jb12);
         jpOne.add(jb13);
@@ -106,6 +114,14 @@ public class ClientGUI extends JFrame implements ActionListener {
         jb26.setBackground(empty);
         jb27 = new JButton();
         jb27.setBackground(empty);
+
+        jb21.addActionListener(this);
+        jb22.addActionListener(this);
+        jb23.addActionListener(this);
+        jb24.addActionListener(this);
+        jb25.addActionListener(this);
+        jb26.addActionListener(this);
+        jb27.addActionListener(this);
 
         jpTwo.add(jb21);
         jpTwo.add(jb22);
@@ -134,6 +150,14 @@ public class ClientGUI extends JFrame implements ActionListener {
         jb37 = new JButton();
         jb37.setBackground(empty);
 
+        jb31.addActionListener(this);
+        jb32.addActionListener(this);
+        jb33.addActionListener(this);
+        jb34.addActionListener(this);
+        jb35.addActionListener(this);
+        jb36.addActionListener(this);
+        jb37.addActionListener(this);
+
         jpThree.add(jb31);
         jpThree.add(jb32);
         jpThree.add(jb33);
@@ -160,6 +184,14 @@ public class ClientGUI extends JFrame implements ActionListener {
         jb46.setBackground(empty);
         jb47 = new JButton();
         jb47.setBackground(empty);
+
+        jb41.addActionListener(this);
+        jb42.addActionListener(this);
+        jb43.addActionListener(this);
+        jb44.addActionListener(this);
+        jb45.addActionListener(this);
+        jb46.addActionListener(this);
+        jb47.addActionListener(this);
 
         jpFour.add(jb41);
         jpFour.add(jb42);
@@ -188,6 +220,14 @@ public class ClientGUI extends JFrame implements ActionListener {
         jb57 = new JButton();
         jb57.setBackground(empty);
 
+        jb51.addActionListener(this);
+        jb52.addActionListener(this);
+        jb53.addActionListener(this);
+        jb54.addActionListener(this);
+        jb55.addActionListener(this);
+        jb56.addActionListener(this);
+        jb57.addActionListener(this);
+
         jpFive.add(jb51);
         jpFive.add(jb52);
         jpFive.add(jb53);
@@ -214,6 +254,14 @@ public class ClientGUI extends JFrame implements ActionListener {
         jb66.setBackground(empty);
         jb67 = new JButton();
         jb67.setBackground(empty);
+
+        jb61.addActionListener(this);
+        jb62.addActionListener(this);
+        jb63.addActionListener(this);
+        jb64.addActionListener(this);
+        jb65.addActionListener(this);
+        jb66.addActionListener(this);
+        jb67.addActionListener(this);
 
         jpSix.add(jb61);
         jpSix.add(jb62);
@@ -242,6 +290,21 @@ public class ClientGUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae){
         Object choice = ae.getSource();
-        
+        if (choice == jb67){
+            if (jb67.getBackground() == empty){
+                jb67.setBackground(Reds);
+            }
+            else if (jb67.getBackground() != empty){
+                JOptionPane.showMessageDialog( null, "Space Already Chosen!");
+            }
+        }
+        else if (choice == jb11){
+            if (jb11.getBackground() == empty){
+                jb11.setBackground(Yellows);
+            }
+            else if (jb11.getBackground() != empty){
+                JOptionPane.showMessageDialog( null, "Space Already Chosen!");
+            }
+        }
     }
 }
