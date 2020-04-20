@@ -9,6 +9,14 @@ public class Client extends JFrame implements ActionListener {
   //create variables
   JPanel mainGrid = new JPanel(new GridLayout(0, 7));
 
+  //items for menu
+  private JMenuBar mBar;
+  private JMenu mGame;
+  private JMenuItem mConnect;
+  private JMenuItem mHelp;
+  private JRadioButtonMenuItem rbMenuItem;
+  private JCheckBoxMenuItem cbMenuItem;
+
   //icons
   ImageIcon white = new ImageIcon("ClientAssets/white64.png");
   ImageIcon blue = new ImageIcon("ClientAssets/blue64.png");
@@ -83,6 +91,21 @@ public class Client extends JFrame implements ActionListener {
 
   //constructor
   public Client(){
+    //Create the menu bar.
+    mBar = new JMenuBar();
+    //Build the file menu.
+    mGame = new JMenu("Game");
+    mBar.add(mGame);
+    //make and add JMenuItems
+    mConnect = new JMenuItem("Connect");
+    mConnect.addActionListener(this);
+    mGame.add(mConnect);
+    mHelp = new JMenuItem("Help");
+    mHelp.addActionListener(this);
+    mGame.add(mHelp);
+
+    //set menu bar
+    setJMenuBar(mBar);
 
     //main grid
     mainGrid.setBackground(new Color(0, 0, 0));
