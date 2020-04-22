@@ -14,6 +14,7 @@ public class Client extends JFrame implements ActionListener {
   private JMenu mGame;
   private JMenuItem mConnect;
   private JMenuItem mHelp;
+  private JMenuItem mExit;
   private JRadioButtonMenuItem rbMenuItem;
   private JCheckBoxMenuItem cbMenuItem;
 
@@ -91,18 +92,26 @@ public class Client extends JFrame implements ActionListener {
 
   //constructor
   public Client(){
+
     //Create the menu bar.
     mBar = new JMenuBar();
+
     //Build the file menu.
     mGame = new JMenu("Game");
     mBar.add(mGame);
+
     //make and add JMenuItems
     mConnect = new JMenuItem("Connect");
     mConnect.addActionListener(this);
     mGame.add(mConnect);
+
     mHelp = new JMenuItem("Help");
     mHelp.addActionListener(this);
     mGame.add(mHelp);
+
+    mExit = new JMenuItem("Exit");
+    mExit.addActionListener(this);
+    mGame.add(mExit);
 
     //set menu bar
     setJMenuBar(mBar);
@@ -176,6 +185,17 @@ public class Client extends JFrame implements ActionListener {
       //set object
       Object obj = event.getSource();
 
+      if (obj == mConnect){
+        String stPort = JOptionPane.showInputDialog( null, "Input Server Port \n Or click OK for default", "123456");
+        int port = Integer.parseInt(stPort);
+        String ip = JOptionPane.showInputDialog(null, "Input Server IP \n Or Click OK for default", "123.456.7.89");
+
+        System.out.println("STPort " + stPort + " Port " + port + " IP " + ip);
+      }
+      if (obj == mExit){
+        System.exit(0);
+      }
+
 
 
    }
@@ -186,8 +206,14 @@ public class Client extends JFrame implements ActionListener {
     frame.setTitle("Lab04Part2 - Part 1");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(700, 600);
+    frame.pack();
     frame.setLocationRelativeTo(null);
     frame.setVisible(true);
   }
+
+  public void socketConnect (String pasIP, int pasPT) throws UnknownHostException, IOException {
+    Socket soc = new Socket (pasIP, pasPT);
+  }
+  
 
 }
