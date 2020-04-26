@@ -1,10 +1,12 @@
+package server.winchecker.test;
+
 import org.junit.jupiter.api.Test;
+import server.winchecker.Connect4WinChecker;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -15,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Connect4WinCheckerTest {
 
-    private static final String baseDirectory = "C:\\Users\\awhk7\\Desktop\\Java Stuff II\\Group Project\\";
+    private static final String baseDirectory = "C:\\Users\\awhk7\\Desktop\\Java Stuff II\\Group Project\\FourWithFriends\\server\\winchecker\\test\\";
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
@@ -87,5 +89,33 @@ class Connect4WinCheckerTest {
         board = getBoard(getFileLines(baseDirectory + "TestBoard.txt"));
         assertEquals(false, new Connect4WinChecker().checkDiagonals(board, 1, 'R'));
         assertEquals(false, new Connect4WinChecker().checkDiagonals(board, 5, 'R'));
+    }
+
+    @Test
+    public void testConnect4WinChecker(){
+        char[][] board = getBoard(getFileLines(baseDirectory + "TestBoard.txt"));
+        assertEquals(false, new Connect4WinChecker().checkWin(board, 3));
+        board = getBoard(getFileLines(baseDirectory + "TestBoard1.txt"));
+        assertEquals(true, new Connect4WinChecker().checkWin(board, 0));
+        board = getBoard(getFileLines(baseDirectory + "TestBoard2.txt"));
+        assertEquals(false, new Connect4WinChecker().checkWin(board, 6));
+        board = getBoard(getFileLines(baseDirectory + "TestBoard3.txt"));
+        assertEquals(true, new Connect4WinChecker().checkWin(board, 3));
+        try {
+            new Connect4WinChecker().checkWin(board, 0);
+            fail();
+        }
+        catch(IllegalArgumentException iae){
+            assertEquals("For some reason the column that the player placed their piece into (0) has no items",
+                    iae.getMessage());
+        }
+        board = getBoard(getFileLines(baseDirectory + "TestBoard4.txt"));
+        assertEquals(true, new Connect4WinChecker().checkWin(board, 3));
+        board = getBoard(getFileLines(baseDirectory + "TestBoard5.txt"));
+        assertEquals(false, new Connect4WinChecker().checkWin(board, 1));
+        board = getBoard(getFileLines(baseDirectory + "TestBoard6.txt"));
+        assertEquals(true, new Connect4WinChecker().checkWin(board, 6));
+        assertEquals(false, new Connect4WinChecker().checkWin(board, 5));
+        assertEquals(false, new Connect4WinChecker().checkWin(board, 2));
     }
 }

@@ -1,3 +1,5 @@
+package server.winchecker;
+
 import java.util.*;
 
 /**
@@ -91,8 +93,8 @@ public class Connect4WinChecker {
      */
     public boolean checkLine(char[] line, char playerColor) {
         int streak = 0;
-        for (int i = 0; i < line.length; i++) {
-            if (line[i] == playerColor) {
+        for (char c : line) {
+            if (c == playerColor) {
                 streak += 1;
             } else {
                 streak = 0;
