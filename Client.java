@@ -186,11 +186,17 @@ public class Client extends JFrame implements ActionListener {
       Object obj = event.getSource();
 
       if (obj == mConnect){
-        String stPort = JOptionPane.showInputDialog( null, "Input Server Port \n Or click OK for default", "123456");
+        String stPort = JOptionPane.showInputDialog( null, "Input Server Port \n Or click OK for default", "1234");
         int port = Integer.parseInt(stPort);
         String ip = JOptionPane.showInputDialog(null, "Input Server IP \n Or Click OK for default", "123.456.7.89");
 
         System.out.println("STPort " + stPort + " Port " + port + " IP " + ip);
+
+        try {
+          socketConnect(ip, port);
+        }
+        catch (UnknownHostException unh){unh.printStackTrace();}
+        catch (IOException ioe){ioe.printStackTrace();}
       }
       if (obj == mExit){
         System.exit(0);
