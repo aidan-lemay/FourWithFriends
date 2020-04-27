@@ -184,6 +184,7 @@ public class Client extends JFrame implements ActionListener {
   public void actionPerformed(ActionEvent event){
       //set object
       Object obj = event.getSource();
+      serverInterface servI = new serverInterface();
 
       if (obj == mConnect){
         String stPort = JOptionPane.showInputDialog( null, "Input Server Port \n Or click OK for default", "1234");
@@ -193,12 +194,13 @@ public class Client extends JFrame implements ActionListener {
         System.out.println("STPort " + stPort + " Port " + port + " IP " + ip);
 
         try {
-          socketConnect(ip, port);
+          servI.socketConnect(ip, port);
         }
         catch (UnknownHostException unh){unh.printStackTrace();}
         catch (IOException ioe){ioe.printStackTrace();}
       }
       if (obj == mExit){
+        servI.socketDisconnect();
         System.exit(0);
       }
 
@@ -217,9 +219,19 @@ public class Client extends JFrame implements ActionListener {
     frame.setVisible(true);
   }
 
-  public void socketConnect (String pasIP, int pasPT) throws UnknownHostException, IOException {
-    Socket soc = new Socket (pasIP, pasPT);
-  }
+  class serverInterface {
 
+    public Socket soc;
+
+    public void socketConnect (String pasIP, int pasPT) throws UnknownHostException, IOException {
+      soc = new Socket (pasIP, pasPT);
+    }
+    public void socketDisconnect (){
+      try {
+        soc.close();
+      }
+      catch(IOException ioe){ioe.printStackTrace();}
+    }
+  }
 
 }
