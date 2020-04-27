@@ -203,7 +203,7 @@ public class Client extends JFrame implements ActionListener {
   //main
   public static void main(String[] args) {
     Client frame = new Client();
-    frame.setTitle("Lab04Part2 - Part 1");
+    frame.setTitle("FourWithFriends");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(700, 600);
     frame.pack();
@@ -214,6 +214,6 @@ public class Client extends JFrame implements ActionListener {
   public void socketConnect (String pasIP, int pasPT) throws UnknownHostException, IOException {
     Socket soc = new Socket (pasIP, pasPT);
   }
-  
+
 
 }
