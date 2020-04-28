@@ -3,6 +3,8 @@ import java.io.*;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.*;
 
 public class Client extends JFrame implements ActionListener {
   /**
@@ -322,9 +324,26 @@ public class Client extends JFrame implements ActionListener {
     frame.pack();
     frame.setLocationRelativeTo(null);
     frame.setVisible(true);
+    frame.playSound();
+
+
   }
 
+
+
   //methods
+  public void playSound() {
+    try {
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("ClientAssets/theme.wav").getAbsoluteFile());
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioInputStream);
+        clip.start();
+    } catch(Exception ex) {
+        System.out.println("Error with playing sound.");
+        ex.printStackTrace();
+    }
+  }
+
   void dropOrange(int column) {
     //variables
     int toFall = 0;
@@ -358,8 +377,13 @@ public class Client extends JFrame implements ActionListener {
       if (board[i][column] != 'N') {
         keepDropping = false;
       }
+      System.out.println(i);
     }
-    System.out.println(toFall);
+    System.out.println("tf+ " + toFall);
+    //check for not first time
+    if ((toFall == 4) && (board[toFall+1][column] != 'B')) {
+      toFall++;
+    }
     guiBoard[toFall][column].setIcon(blue);
     board[toFall][column] = 'B';
   }
