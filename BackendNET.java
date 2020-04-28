@@ -1,5 +1,8 @@
 import java.net.*;
 import java.io.*;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 /**
  * ISTE-121 final project backend multithreaded server code
@@ -109,23 +112,40 @@ public class BackendNET {
 		public void run() {
 			BufferedReader br;
 			PrintWriter pw;
-			String clientMsg;
+         String clientMsg;
+         Object clientData;
+         PrintStream ps;
+         ObjectInputStream ois;
+         ObjectOutputStream os;
 
          try {
 			  br = new BufferedReader(new InputStreamReader(cs.getInputStream()));
 
 			  pw = new PrintWriter(new OutputStreamWriter(cs.getOutputStream()));
 
-			  clientMsg = br.readLine();
+           ois = new ObjectInputStream(cs.getInputStream());
+           os = new ObjectOutputStream(cs.getOutputStream());
+
+           clientMsg = br.readLine();
+           clientData =  ois.readObject();
 			  System.out.println("Server read: "+ clientMsg);
-			  pw.println(clientMsg.toUpperCase());
-			  pw.flush();
-           }
+           pw.println(clientMsg.toUpperCase());
+           os.writeObject(clientData);
+
+           pw.flush();
+           os.flush();
+         }
 
 			catch( IOException ioe ) {
 				System.out.println("IO exception occurred inside catch");
 				ioe.printStackTrace();
-			}
+         }
+         catch(ClassNotFoundException cnf)   {
+            
+            System.out.println("Class not found");
+            cnf.printStackTrace();
+         
+         }
 
          } //run method
 	 } //ThreadServer

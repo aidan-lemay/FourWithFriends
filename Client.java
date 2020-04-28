@@ -391,6 +391,8 @@ public class Client extends JFrame implements ActionListener {
 
     servI.socketSend();
 
+    
+
     playSoundEffect();
   }
 
