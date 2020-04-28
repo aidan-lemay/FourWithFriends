@@ -416,7 +416,7 @@ public class Client extends JFrame implements ActionListener {
     }
     public void socketSend (Object obj) {
       try {         
-        //BufferedReader br = new BufferedReader( new InputStreamReader( soc.getInputStream() ) );
+        BufferedReader br = new BufferedReader( new InputStreamReader( soc.getInputStream() ) );
         PrintWriter    pw = new PrintWriter(    new OutputStreamWriter( soc.getOutputStream()));
         pw.println( obj );
         pw.flush();
