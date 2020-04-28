@@ -389,9 +389,9 @@ public class Client extends JFrame implements ActionListener {
     guiBoard[toFall][column].setIcon(orange);
     board[toFall][column] = 'O';
 
-    servI.socketSend();
+    //servI.socketSend();
 
-    
+
 
     playSoundEffect();
   }
