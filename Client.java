@@ -367,9 +367,7 @@ public class Client extends JFrame implements ActionListener {
       if (board[i][column] != 'N') {
         keepDropping = false;
       }
-      System.out.println(i);
     }
-    System.out.println("tf+ " + toFall);
     //check for not first time
     if ((toFall == 4) && (board[toFall+1][column] != 'O')) {
       toFall++;
@@ -390,9 +388,7 @@ public class Client extends JFrame implements ActionListener {
       if (board[i][column] != 'N') {
         keepDropping = false;
       }
-      System.out.println(i);
     }
-    System.out.println("tf+ " + toFall);
     //check for not first time
     if ((toFall == 4) && (board[toFall+1][column] != 'B')) {
       toFall++;
