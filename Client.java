@@ -333,9 +333,9 @@ public class Client extends JFrame implements ActionListener {
     }
     System.out.println("tf+ " + toFall);
     //check for not first time
-    /*if ((toFall == 4) && (board[toFall][column+1] != 'O')) {
+    if ((toFall == 4) && (board[toFall+1][column] != 'O')) {
       toFall++;
-    }*/
+    }
     guiBoard[toFall][column].setIcon(orange);
     board[toFall][column] = 'O';
   }
