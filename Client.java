@@ -14,7 +14,7 @@ public class Client extends JFrame implements ActionListener {
   JPanel mainGrid = new JPanel(new GridLayout(0, 7));
 
   //misc variables
-  char playerColor = 'O';
+  char playerColor = 'B';
 
 
   //array for local board state
@@ -222,7 +222,7 @@ public class Client extends JFrame implements ActionListener {
       serverInterface servI = new serverInterface();
 
       if (obj == mConnect){
-        String stPort = JOptionPane.showInputDialog( null, "Input Server Port \n Or click OK for default", "1234");
+        String stPort = JOptionPane.showInputDialog( null, "Input Server Port \n Or click OK for default", "16789");
         int port = Integer.parseInt(stPort);
         String ip = JOptionPane.showInputDialog(null, "Input Server IP \n Or Click OK for default", "123.456.7.89");
 
