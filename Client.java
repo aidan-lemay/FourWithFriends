@@ -213,8 +213,6 @@ public class Client extends JFrame implements ActionListener {
     mainGrid.add(R1C7);
 
     //guiBoard[0][1].setIcon(blue);
-
-
   }
 
   //ActionListener things
@@ -326,12 +324,28 @@ public class Client extends JFrame implements ActionListener {
     frame.setVisible(true);
     frame.playSound();
 
-
+    //choose color
+    boolean needPick = true;
+    while (needPick) {
+      Object[] options = {"Orange", "Blue"};
+       int n = JOptionPane.showOptionDialog(frame, "Would you like to be orange or blue? (pick the oposite color of your friend)", "An Important Question",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,options,options[0]);
+       if (n == JOptionPane.YES_OPTION) {
+         frame.setPlayerColor('O');
+         needPick = false;
+       } else if (n == JOptionPane.NO_OPTION) {
+         frame.setPlayerColor('B');
+         needPick = false;
+       }
+    }
   }
 
 
 
   //methods
+  void setPlayerColor(char _c) {
+    playerColor = _c;
+  }
+
   public void playSound() {
     try {
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("/ClientAssets/theme.wav").getAbsoluteFile());
