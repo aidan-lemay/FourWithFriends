@@ -344,6 +344,18 @@ public class Client extends JFrame implements ActionListener {
     }
   }
 
+  public void playSoundEffect() {
+    try {
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("ClientAssets/drop.wav").getAbsoluteFile());
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioInputStream);
+        clip.start();
+    } catch(Exception ex) {
+        System.out.println("Error with playing sound.");
+        ex.printStackTrace();
+    }
+  }
+
   void dropOrange(int column) {
     //variables
     int toFall = 0;
@@ -364,6 +376,7 @@ public class Client extends JFrame implements ActionListener {
     }
     guiBoard[toFall][column].setIcon(orange);
     board[toFall][column] = 'O';
+    playSoundEffect();
   }
 
   void dropBlue(int column) {
@@ -386,6 +399,7 @@ public class Client extends JFrame implements ActionListener {
     }
     guiBoard[toFall][column].setIcon(blue);
     board[toFall][column] = 'B';
+    playSoundEffect();
   }
 
   class serverInterface {
