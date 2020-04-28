@@ -334,7 +334,7 @@ public class Client extends JFrame implements ActionListener {
   //methods
   public void playSound() {
     try {
-        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("ClientAssets/theme.wav").getAbsoluteFile());
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("/ClientAssets/theme.wav").getAbsoluteFile());
         Clip clip = AudioSystem.getClip();
         clip.open(audioInputStream);
         clip.start();
@@ -364,6 +364,9 @@ public class Client extends JFrame implements ActionListener {
     }
     guiBoard[toFall][column].setIcon(orange);
     board[toFall][column] = 'O';
+
+    servI.socketSend();
+
   }
 
   void dropBlue(int column) {
@@ -401,6 +404,16 @@ public class Client extends JFrame implements ActionListener {
       }
       catch(IOException ioe){ioe.printStackTrace();}
     }
+    public void socketSend (Object obj) {
+      try {         
+        //BufferedReader br = new BufferedReader( new InputStreamReader( soc.getInputStream() ) );
+        PrintWriter    pw = new PrintWriter(    new OutputStreamWriter( soc.getOutputStream()));
+        pw.println( obj );
+        pw.flush();
+      }
+      catch (IOException ioe) { ioe.printStackTrace(); }
+      
+    } 
   }
 
 }
