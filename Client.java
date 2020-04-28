@@ -3,10 +3,14 @@ import java.io.*;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import java.util.*;
 
 public class Client extends JFrame implements ActionListener {
-  //create variables
+  /**
+   *
+   */
+  private static final long serialVersionUID = 2622182545810752592L;
+
+  // create variables
   JPanel mainGrid = new JPanel(new GridLayout(0, 7));
 
   //misc variables
@@ -23,8 +27,6 @@ public class Client extends JFrame implements ActionListener {
   private JMenuItem mConnect;
   private JMenuItem mHelp;
   private JMenuItem mExit;
-  private JRadioButtonMenuItem rbMenuItem;
-  private JCheckBoxMenuItem cbMenuItem;
 
   //icons
   ImageIcon white = new ImageIcon("ClientAssets/white64.png");
