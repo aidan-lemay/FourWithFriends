@@ -18,7 +18,14 @@ public class Client extends JFrame implements ActionListener {
 
 
   //array for local board state
-  char[][] board = {{'N','N','N','N','N','N'}, {'N','N','N','N','N','N'}, {'N','N','N','N','N','N'}, {'N','N','N','N','N','N'}, {'N','N','N','N','N','N'},{'N','N','N','N','N','N'}, {'N','N','N','N','N','N'}};
+  char[][] board = {
+    {'N','N','N','N','N','N','N'},
+    {'N','N','N','N','N','N','N'},
+    {'N','N','N','N','N','N','N'},
+    {'N','N','N','N','N','N','N'},
+    {'N','N','N','N','N','N','N'},
+    {'N','N','N','N','N','N','N'},
+  };
 
 
   //items for menu
