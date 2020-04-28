@@ -203,7 +203,7 @@ public class Client extends JFrame implements ActionListener {
     mainGrid.add(R1C6);
     mainGrid.add(R1C7);
 
-    guiBoard[0][1].setIcon(blue);
+    //guiBoard[0][1].setIcon(blue);
 
 
   }
