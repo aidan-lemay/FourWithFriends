@@ -14,7 +14,7 @@ public class Client extends JFrame implements ActionListener {
   JPanel mainGrid = new JPanel(new GridLayout(0, 7));
 
   //misc variables
-  char playerColor = 'O';
+  char playerColor = 'B';
 
 
   //array for local board state
@@ -358,8 +358,13 @@ public class Client extends JFrame implements ActionListener {
       if (board[i][column] != 'N') {
         keepDropping = false;
       }
+      System.out.println(i);
     }
-    System.out.println(toFall);
+    System.out.println("tf+ " + toFall);
+    //check for not first time
+    if ((toFall == 4) && (board[toFall+1][column] != 'B')) {
+      toFall++;
+    }
     guiBoard[toFall][column].setIcon(blue);
     board[toFall][column] = 'B';
   }
