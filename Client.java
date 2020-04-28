@@ -9,6 +9,14 @@ public class Client extends JFrame implements ActionListener {
   //create variables
   JPanel mainGrid = new JPanel(new GridLayout(0, 7));
 
+  //misc variables
+  char playerColor = 'O';
+
+
+  //array for local board state
+  char[][] board = {{'N','N','N','N','N','N'}, {'N','N','N','N','N','N'}, {'N','N','N','N','N','N'}, {'N','N','N','N','N','N'}, {'N','N','N','N','N','N'},{'N','N','N','N','N','N'}, {'N','N','N','N','N','N'}};
+
+
   //items for menu
   private JMenuBar mBar;
   private JMenu mGame;
@@ -87,7 +95,15 @@ public class Client extends JFrame implements ActionListener {
   JButton C6Button = new JButton("Drop Piece");
   JButton C7Button = new JButton("Drop Piece");
 
-
+  //array for local board state
+  JLabel[][] guiBoard = {
+    {R6C1, R6C2, R6C3, R6C4, R6C5, R6C6, R6C7},
+    {R5C1, R5C2, R5C3, R5C4, R5C5, R5C6, R5C7},
+    {R4C1, R4C2, R4C3, R4C4, R4C5, R4C6, R4C7},
+    {R3C1, R3C2, R3C3, R3C4, R3C5, R3C6, R3C7},
+    {R2C1, R2C2, R2C3, R2C4, R2C5, R2C6, R2C7},
+    {R1C1, R1C2, R1C3, R1C4, R1C5, R1C6, R1C7}
+  };
 
 
   //constructor
@@ -123,12 +139,19 @@ public class Client extends JFrame implements ActionListener {
 
     //add objects to main grid
     mainGrid.add(C1Button);
+    C1Button.addActionListener(this);
     mainGrid.add(C2Button);
+    C2Button.addActionListener(this);
     mainGrid.add(C3Button);
+    C3Button.addActionListener(this);
     mainGrid.add(C4Button);
+    C4Button.addActionListener(this);
     mainGrid.add(C5Button);
+    C5Button.addActionListener(this);
     mainGrid.add(C6Button);
+    C6Button.addActionListener(this);
     mainGrid.add(C7Button);
+    C7Button.addActionListener(this);
 
     mainGrid.add(R6C1);
     mainGrid.add(R6C2);
@@ -178,6 +201,9 @@ public class Client extends JFrame implements ActionListener {
     mainGrid.add(R1C6);
     mainGrid.add(R1C7);
 
+    guiBoard[0][1].setIcon(blue);
+
+
   }
 
   //ActionListener things
@@ -204,6 +230,76 @@ public class Client extends JFrame implements ActionListener {
         System.exit(0);
       }
 
+      //button 1
+      if (obj == C1Button){
+        if (playerColor == 'O') {
+          dropOrange(0);
+        }
+        else if (playerColor == 'B') {
+          dropBlue(0);
+        }
+      }
+
+      //button 2
+      if (obj == C2Button){
+        if (playerColor == 'O') {
+          dropOrange(1);
+        }
+        else if (playerColor == 'B') {
+          dropBlue(1);
+        }
+      }
+
+      //button 3
+      if (obj == C3Button){
+        if (playerColor == 'O') {
+          dropOrange(2);
+        }
+        else if (playerColor == 'B') {
+          dropBlue(2);
+        }
+      }
+
+      //button 4
+      if (obj == C4Button){
+        if (playerColor == 'O') {
+          dropOrange(3);
+        }
+        else if (playerColor == 'B') {
+          dropBlue(3);
+        }
+      }
+
+      //button 5
+      if (obj == C5Button){
+        if (playerColor == 'O') {
+          dropOrange(4);
+        }
+        else if (playerColor == 'B') {
+          dropBlue(4);
+        }
+      }
+
+      //button 6
+      if (obj == C6Button){
+        if (playerColor == 'O') {
+          dropOrange(5);
+        }
+        else if (playerColor == 'B') {
+          dropBlue(5);
+        }
+      }
+
+      //button 7
+      if (obj == C7Button){
+        if (playerColor == 'O') {
+          dropOrange(6);
+        }
+        else if (playerColor == 'B') {
+          dropBlue(6);
+        }
+      }
+
 
 
    }
@@ -217,6 +313,46 @@ public class Client extends JFrame implements ActionListener {
     frame.pack();
     frame.setLocationRelativeTo(null);
     frame.setVisible(true);
+  }
+
+  //methods
+  void dropOrange(int column) {
+    //variables
+    int toFall = 0;
+    boolean keepDropping = true;
+
+    //dropping logic
+    for (int i = 0; (i < 6) && (keepDropping); i++) {
+      toFall = i-1;
+      if (board[i][column] != 'N') {
+        keepDropping = false;
+      }
+      System.out.println(i);
+    }
+    System.out.println("tf+ " + toFall);
+    //check for not first time
+    /*if ((toFall == 4) && (board[toFall][column+1] != 'O')) {
+      toFall++;
+    }*/
+    guiBoard[toFall][column].setIcon(orange);
+    board[toFall][column] = 'O';
+  }
+
+  void dropBlue(int column) {
+    //variables
+    int toFall = 0;
+    boolean keepDropping = true;
+
+    //dropping logic
+    for (int i = 0; (i < 6) && (keepDropping); i++) {
+      toFall = i-1;
+      if (board[i][column] != 'N') {
+        keepDropping = false;
+      }
+    }
+    System.out.println(toFall);
+    guiBoard[toFall][column].setIcon(blue);
+    board[toFall][column] = 'B';
   }
 
   class serverInterface {
